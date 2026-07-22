@@ -18,10 +18,12 @@ const[games,setGames] = useState(initialGames);
 const[searchTerm, setSearchTerm] = useState('');
 const filteredGames = games.filter((game)=>game.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
 
-// sortBy -->
+// Add game -->
 const handleAddGame=(newGame)=> {
-setGames([...games], newGame)
+setGames([...games,newGame] )
 }
+
+
 
 
 

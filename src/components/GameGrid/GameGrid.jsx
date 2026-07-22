@@ -3,7 +3,7 @@ import GameCard from '../GameCard/GameCard';
 
 export default function GameGrid({games}) {
   return (
-    <div>
+    <div className={styles.gameContainer}>
       {games.map((game)=>(
       <GameCard key={game.id}
        {...game}/>
