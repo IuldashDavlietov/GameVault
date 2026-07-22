@@ -1,19 +1,36 @@
-import styles from './AddGameForm.module.css';
+import { useState } from "react"
 
-export default function AddGameForm({ genres }) {
+
+export default function AddGameForm({ genres, handleAddGame }) {
+
+  const [formData, setFormData] = useState({
+    title: '',
+    genre: genres[0] || '',
+    coverUrl: '',
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    handleAddGame(formData)
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }))
+  }
+
+
   return (
-
-    <form action="">
-      <input type="text" />
-      <select>
+    <form onSubmit={handleSubmit}>
+      <input type="text" onChange={handleChange} />
+      <select key={genres}>
         {genres.map((genre) => (
-      <option key={genre} value={genre}>{genre}</option>
+          <option value={genre}>{genre}</option>
         ))}
       </select>
-      <input type="text" />
-      <button>Add game</button>
+      <input type="text" onChange={handleChange} />
+      <button type="submit">Add game</button>
     </form>
-
 
   )
 }

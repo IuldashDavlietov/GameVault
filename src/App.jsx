@@ -16,7 +16,13 @@ const[games,setGames] = useState(initialGames);
 
 // SearchBar -->
 const[searchTerm, setSearchTerm] = useState('');
-const filteredGames = games.filter((game)=>game.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+const filteredGames = games.filter((game)=>game.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
+
+// sortBy -->
+const handleAddGame=(newGame)=> {
+setGames([...games], newGame)
+}
+
 
 
 
@@ -27,7 +33,7 @@ const filteredGames = games.filter((game)=>game.title.toLocaleLowerCase().includ
     <div>
       <Header title= {title}/>
       <CollectionStats />
-      <AddGameForm genres={genres}/>
+      <AddGameForm genres={genres} handleAddGame={handleAddGame}/>
       <SearchBar  searchTerm ={searchTerm} handleChange={setSearchTerm}/>
       <FilterBar genres={genres} />
       <GameGrid games={filteredGames}/>
