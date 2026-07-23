@@ -1,10 +1,10 @@
 import styles from './CollectionStats.module.css';
 
-export default function CollectionStats() {
+export default function CollectionStats({totalGames, favoriteGames}) {
   return (
     <div>
-      <p> games</p>
-      <p> favotites</p>
+      <p>{totalGames}</p>
+      <p> {favoriteGames}</p>
     </div>
   )
 }
